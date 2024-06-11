@@ -41,9 +41,9 @@ public class AccountDBService {
     }
 
     public Account updateAccountById(int accountId, int amount, TransactionType type) {
-        String updateQuery = "UPDATE account SET balance = balance + ? WHERE id = ?";
+        String updateQuery = UPDATE_ACCOUNT_BALANCE_PLUS;
         if (type == TransactionType.WITHDRAWAL) {
-            updateQuery = "UPDATE account SET balance = balance - ? WHERE id = ?";
+            updateQuery = UPDATE_ACCOUNT_BALANCE_MINUS;
         }
 
         try (Connection connection = HikariCPDataSource.getConnection();
